@@ -9,7 +9,7 @@ import "./comicsList.scss";
 
 const ComicsList = () => {
   const [comicsList, setComicsList] = useState([]);
-  const [newItemLoading, SetNewItemLoading] = useState(false);
+  const [newItemLoading, setnewItemLoading] = useState(false);
   const [offset, setOffset] = useState(0);
   const [comicsEnded, setComicsEnded] = useState(false);
 
@@ -20,7 +20,7 @@ const ComicsList = () => {
   }, []);
 
   const onRequest = (offset, initial) => {
-    initial ? SetNewItemLoading(false) : SetNewItemLoading(true);
+    initial ? setnewItemLoading(false) : setnewItemLoading(true);
     getAllComics(offset).then(onComicsListLoaded);
   };
 
@@ -30,7 +30,7 @@ const ComicsList = () => {
       ended = true;
     }
     setComicsList([...comicsList, ...newComicsList]);
-    SetNewItemLoading(false);
+    setnewItemLoading(false);
     setOffset(offset + 8);
     setComicsEnded(ended);
   };
